@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Temperature</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url(images/bg-image.jpg) no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form class="col-md-6 m-auto py-5">
+            <div class="input-group mb-3">
+                <input id="inputCityName" type="text" class="form-control"
+                    placeholder="Enter a location for Weather ...">
+                <div class="input-group-append">
+                    <button id="searchBtn" type="button" class="btn btn-danger">Search</button>
+                </div>
+            </div>
+        </form>
+        <div class="weather-status text-white text-center">
+            <img id="weatherIcon" src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <h1 id="cityName">City</h1>
+            <h3><span id="temperature">00</span>&deg;C</h3>
+            <h1 id="skyCondition" class="lead">Clouds</h1>
+        </div>
+    </div>
+
+    <script>
+
+        // New York
+        function newYorkTemp() {
+            fetch('https://api.openweathermap.org/data/2.5/weather?q=New York&appid=03b15988e7832ede2c963f792798b7f7')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("cityName").innerText = data.name;
+                    const mainInfo = data.main;
+                    const temperature = mainInfo.temp;
+                    const temperatureCelsius = Math.round(temperature - 273);
+                    document.getElementById("temperature").innerText = temperatureCelsius;
+                    const skyCondition = data.weather[0].main;
+                    document.getElementById("skyCondition").innerText = skyCondition;
+                    document.getElementById("weatherIcon").src = "http://openweathermap.org/img/wn/01d@2x.png";
+                })
+        }
+
+
+        
+        // Chicago
+        function chicagoTemp() {
+            fetch('https://api.openweathermap.org/data/2.5/weather?q=Chicago&appid=03b15988e7832ede2c963f792798b7f7')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("cityName").innerText = data.name;
+                    const mainInfo = data.main;
+                    const temperature = mainInfo.temp;
+                    const temperatureCelsius = Math.round(temperature - 273);
+                    document.getElementById("temperature").innerText = temperatureCelsius;
+                    const skyCondition = data.weather[0].main;
+                    document.getElementById("skyCondition").innerText = skyCondition;
+                    document.getElementById("weatherIcon").src = "http://openweathermap.org/img/wn/01d@2x.png";
+                })
+        }
+
+
+
+        // London
+        function londonTemp() {
+            fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=03b15988e7832ede2c963f792798b7f7')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("cityName").innerText = data.name;
+                    const mainInfo = data.main;
+                    const temperature = mainInfo.temp;
+                    const temperatureCelsius = Math.round(temperature - 273);
+                    document.getElementById("temperature").innerText = temperatureCelsius;
+                    const skyCondition = data.weather[0].main;
+                    document.getElementById("skyCondition").innerText = skyCondition;
+                    document.getElementById("weatherIcon").src = "http://openweathermap.org/img/wn/09d@2x.png";
+                })
+        }
+
+
+
+        // Dhaka
+        function dhakaTemp() {
+            fetch('https://api.openweathermap.org/data/2.5/weather?q=Dhaka&appid=03b15988e7832ede2c963f792798b7f7')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("cityName").innerText = data.name;
+                    const mainInfo = data.main;
+                    const temperature = mainInfo.temp;
+                    const temperatureCelsius = Math.round(temperature - 273);
+                    document.getElementById("temperature").innerText = temperatureCelsius;
+                    const skyCondition = data.weather[0].main;
+                    document.getElementById("skyCondition").innerText = skyCondition;
+                    document.getElementById("weatherIcon").src = "http://openweathermap.org/img/wn/50n@2x.png";
+                })
+        }
+
+
+
+        // Riyadh
+        function riyadhTemp() {
+            fetch('https://api.openweathermap.org/data/2.5/weather?q=Riyadh&appid=03b15988e7832ede2c963f792798b7f7')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("cityName").innerText = data.name;
+                    const mainInfo = data.main;
+                    const temperature = mainInfo.temp;
+                    const temperatureCelsius = Math.round(temperature - 273);
+                    document.getElementById("temperature").innerText = temperatureCelsius;
+                    const skyCondition = data.weather[0].main;
+                    document.getElementById("skyCondition").innerText = skyCondition;
+                    document.getElementById("weatherIcon").src = "http://openweathermap.org/img/wn/01d@2x.png";
+                })
+        }
+
+
+        document.getElementById("searchBtn").addEventListener("click", function() {
+            const searchText = document.getElementById("inputCityName").value;
+            if (searchText == "New York" || searchText == "new york") {
+                newYorkTemp();
+            }
+            if (searchText == "Chicago" || searchText == "chicago") {
+                chicagoTemp();
+            }
+            if (searchText == "London" || searchText == "london") {
+                londonTemp();
+            }
+            if (searchText == "Dhaka" || searchText == "dhaka") {
+                dhakaTemp();
+            }
+            if (searchText == "Riyadh" || searchText == "riyadh") {
+                riyadhTemp();
+            }
+        })
+    </script>
+</body>
+
+</html>
